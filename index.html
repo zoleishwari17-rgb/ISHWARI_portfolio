@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishwari Zole | Portfolio</title>
+    <!-- Google Fonts for Serif headings, Sans-serif body, and Handwritten italic taglines -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121214;
+            --chalkboard-texture: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 80%);
+            --text-ivory: #F4F4F6;
+            --text-grey: #9EA1A6;
+            --lavender: #C4B5FD;
+            --dusty-blue: #93C5FD;
+            --border-grey: #2A2A2E;
+            --card-bg: #18181C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: var(--chalkboard-texture);
+            color: var(--text-ivory);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .tagline {
+            font-family: 'Caveat', cursive;
+            color: var(--lavender);
+            font-size: 1.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(18, 18, 20, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-grey);
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--text-ivory);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-grey);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--lavender);
+        }
+
+        /* Sections General */
+        section {
+            padding: 7rem 10% 4rem 10%;
+            border-bottom: 1px solid var(--border-grey);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-ivory);
+        }
+
+        .section-subtitle {
+            color: var(--text-grey);
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            padding-top: 5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content p {
+            max-width: 650px;
+            color: var(--text-grey);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border: 1px solid var(--lavender);
+            color: var(--lavender);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--lavender);
+            color: var(--bg-color);
+        }
+
+        /* About & Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-grey);
+            padding: 2rem;
+            border-radius: 6px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--lavender);
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--lavender);
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card li {
+            margin-bottom: 0.8rem;
+            color: var(--text-grey);
+            font-size: 0.95rem;
+        }
+
+        .card li strong {
+            color: var(--text-ivory);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(196, 181, 253, 0.08);
+            border: 1px solid rgba(196, 181, 253, 0.2);
+            color: var(--lavender);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-box p {
+            color: var(--text-grey);
+            margin-bottom: 2rem;
+        }
+
+        .email-link {
+            font-size: 1.3rem;
+            color: var(--lavender);
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            border-bottom: 1px dashed var(--lavender);
+            padding-bottom: 2px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: var(--text-grey);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-grey);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#home" class="nav-logo">ISHWARI ZOLE</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#focus">Current Focus</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-content">
+            <div class="tagline">✦ Aspiring Entrepreneur & Creator</div>
+            <h1>Hi, I am Ishwari.</h1>
+            <p>I like exploring new ideas, challenging my potential, seeing the world through different perspectives. I'm curious to keep growing and hope to build something of my own as an entrepreneur.</p>
+            <a href="#contact" class="btn-outline">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Education, milestones, and academic foundation</p>
+        
+        <div class="grid-2">
+            <div class="card">
+                <h3>Education Journey</h3>
+                <ul>
+                    <li><strong>2026 – Present:</strong> IIM Bangalore — DBE Digital Business & Entrepreneurship</li>
+                    <li><strong>2024 – 2026 (XI – XII complete):</strong> Secondary & Higher Secondary Ashram School, Pimparkane</li>
+                    <li><strong>2012 – 2024 (I – X completed):</strong> Marutirao Kote Abhinav Public School, Akole</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Academics</h3>
+                <ul>
+                    <li><strong>Class X (2024):</strong> 89.8%</li>
+                    <li><strong>Class XII (2026):</strong> 60%</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Am Currently Focusing On -->
+    <section id="focus">
+        <h2 class="section-title">Current Focus</h2>
+        <p class="section-subtitle">Areas of active development and exploration</p>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Exams</h3>
+                <p style="color: var(--text-grey); font-size: 0.95rem;">I'm focused on improving my class 12 results by studying more consistently and strengthening the topics I found challenging. I'm also preparing for entrance exams such as IPMAT and CUET, with the goal of performing my best this time.</p>
+            </div>
+            <div class="card">
+                <h3>Hackathons</h3>
+                <p style="color: var(--text-grey); font-size: 0.95rem;">Preparing to take part in hackathons and build creative solutions.</p>
+            </div>
+            <div class="card">
+                <h3>Entrepreneurial Exploration</h3>
+                <p style="color: var(--text-grey); font-size: 0.95rem;">Learning, researching ideas, and working toward a venture of my own.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">Talents and domains I excel at</p>
+
+        <div class="card" style="max-width: 700px;">
+            <h3>Core Strengths</h3>
+            <div class="skills-list">
+                <span class="skill-tag">Poetry Writing</span>
+                <span class="skill-tag">Versatility in Role-Playing</span>
+                <span class="skill-tag">Rifle Shooting</span>
+                <span class="skill-tag">Mathematics</span>
+                <span class="skill-tag">Sketching</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <h2 class="section-title">Achievements</h2>
+        <p class="section-subtitle">Certificates and milestones earned along the way</p>
+
+        <div class="card" style="max-width: 800px;">
+            <h3>Recognitions & Certifications</h3>
+            <ul>
+                <li><strong>5th Place:</strong> State-level drawing competition</li>
+                <li><strong>Gold Medalist:</strong> National Science Olympiad 2023–24</li>
+                <li><strong>Vedic Maths Basic Course:</strong> Completion certificate</li>
+                <li><strong>Vedic Maths Advanced Course:</strong> Completion certificate</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">Reach out for collaborations, discussions, or queries</p>
+
+        <div class="contact-box card">
+            <p>I am always open to connecting with fellow innovators, entrepreneurs, and learners.</p>
+            <a href="mailto:ishwarizole@gmail.com" class="email-link">ishwarizole@gmail.com</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Ishwari Zole. Designed with minimalism and care.</p>
+    </footer>
+
+</body>
+</html>
